@@ -24,6 +24,7 @@ $(document).ready(function() {
     updateTemperature();
     $("#power-saving-status").text("on");
     pauseAudioHighVoltage();
+    $(".power_saving_text").css("background-image", 'url(images/forest.jpg)');
   });
   
   $("#powersaving-off").click(function(){
@@ -31,6 +32,7 @@ $(document).ready(function() {
     updateTemperature();
     $("#power-saving-status").text("off");
     playAudioHighVoltage();
+    $(".power_saving_text").css("background-image", 'url(images/fire.gif)');
   });
 
   function updateTemperature() {

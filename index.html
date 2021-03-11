@@ -4,9 +4,32 @@
     <title>Thermostat</title>
   </head>
   <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #607d8b;
+    }
     .high-usage{ color: red;}
     .medium-usage{ color: orange;}
     .low-usage{ color: green;}
+
+    .power_saving_text{
+      font-size: 100px;
+      color: rgb(0, 0, 0);
+      background-image: url(images/forest.jpg);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+      text-align: center;
+      font-weight: 900;
+      font-family: Impact, fantasy;
+    }
+
+    .power_saving_container{
+      
+    }
+
   </style>
   <body>
     <section>
@@ -24,10 +47,16 @@
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
         <button id="temperature-reset">reset</button>
-        power saving mode is <span id="power-saving-status">on</span>
+      </p>
+      
+      <div class="power_saving_container">
+        <h3 class="power_saving_text">
+          power saving mode is <span id="power-saving-status">on</span>
+        </h3>
         <button id="powersaving-on">PSM on</button>
         <button id="powersaving-off">PSM off</button>
-      </p>
+      </div>
+
     </section>
     <script src="jquery.js"></script>
     <script src="src/thermostat.js"></script>
