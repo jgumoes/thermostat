@@ -23,12 +23,14 @@ $(document).ready(function() {
     thermostat.switchPowerSavingModeOn();
     updateTemperature();
     $("#power-saving-status").text("on");
+    pauseAudioHighVoltage();
   });
-
+  
   $("#powersaving-off").click(function(){
     thermostat.switchPowerSavingModeOff();
     updateTemperature();
     $("#power-saving-status").text("off");
+    playAudioHighVoltage();
   });
 
   function updateTemperature() {
@@ -48,5 +50,22 @@ $(document).ready(function() {
     $.get(url + token + units, function(data) {
       $('#current-temperature').text(data.main.temp);
     });
+  }
+
+
+
+
+  var musicHighVoltage = document.getElementById("musicHighVoltage");
+  var firstPlayHighVoltage = true;
+  function playAudioHighVoltage() {
+    if (firstPlayHighVoltage){
+      firstPlayHighVoltage = false
+      musicHighVoltage.currentTime = 13;
+    }
+    musicHighVoltage.play();
+  }
+
+  function pauseAudioHighVoltage() {
+    musicHighVoltage.pause();
   }
 })
