@@ -39,7 +39,10 @@ $(document).ready(function() {
     $("#power-saving-status").text("off");
     playAudioHighVoltage();
     $(".power_saving_text").css("background-image", 'url(images/fire.gif)');
-    $(".powersaving_button").css("background-color", 'red');
+
+    var button = $(".powersaving_button");
+    button.css("background-color", 'red');
+    button.fadeOut(500, function () { return 0;});
   };
 
   $(".powersaving_button").click(function(){
@@ -94,6 +97,23 @@ $(document).ready(function() {
   });
   $('.power_saving_text').css("background-position", "right bottom"); // this needs to be here and not in css, otherwise it won't go in the right place
 
+  // make the PSM buttom behaive naughty
+
+  $("#PSM_button_container").mouseenter(function() {
+    // this will cause the button to disapear when the
+    // user hovers their mouse over the PSM button, but
+    // only when PSM is off
+    var button = $(".powersaving_button");
+    var naughty = $("#power-saving-status").text();
+    console.log('naughty = ' + naughty);
+    if (naughty === 'off'){
+      button.fadeOut(500, function () { return 0;})
+    }
+  });
+
+  $("#PSM_button_container").mouseleave(function() {
+    $(".powersaving_button").fadeIn(500, function () { return 0;})
+  });
 
   // just to make sure this runs properly
   powerSavingOn();
