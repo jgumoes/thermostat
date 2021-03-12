@@ -17,16 +17,18 @@ class Thermostat{
 
   up() {
     if (this._isMaximumTemperature()) {
-      return;
+      return false;
     }
     this.temperature += 1;
+    return true;
   }
 
   down() {
     if (this._isMinimumTemperature()) {
-      return;
+      return false;
     }
-    this.temperature -= 1
+    this.temperature -= 1;
+    return true;
   }
 
   isPowerSavingModeOn(){

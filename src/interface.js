@@ -5,15 +5,18 @@ $(document).ready(function() {
   displayWeather("london");
 
   $("#temperature-up").click(function(){
-    thermostat.up();
+    if (thermostat.up() === false){
+      console.log('at max temp');
+      tooDamnHigh.Batman();
+    }
     updateTemperature();
   });
-
+  
   $("#temperature-down").click(function(){
     thermostat.down();
     updateTemperature();
   });
-
+  
   $("#temperature-reset").click(function(){
     thermostat.resetTemperature();
     updateTemperature();
@@ -94,7 +97,11 @@ $(document).ready(function() {
 
   $(window).on('resize', function(){ // make sure the picture is always in a nice place
     $('.power_saving_text').css("background-position", "right bottom");
+
+    // center too_dman_high in the middle of the page
+    tooDamnHigh.damnPosition();
   });
+
   $('.power_saving_text').css("background-position", "right bottom"); // this needs to be here and not in css, otherwise it won't go in the right place
 
   // make the PSM buttom behaive naughty
@@ -108,12 +115,17 @@ $(document).ready(function() {
     console.log('naughty = ' + naughty);
     if (naughty === 'off'){
       button.fadeOut(500, function () { return 0;})
-    }
+    };
   });
 
   $("#PSM_button_container").mouseleave(function() {
-    $(".powersaving_button").fadeIn(500, function () { return 0;})
+    $(".powersaving_button").fadeIn(500, function () { return 0;});
   });
+
+  // handle the too_damn_high animation
+
+  var tooDamnHigh = new TooDamnHigh();
+  tooDamnHigh.damnPosition();
 
   // just to make sure this runs properly
   powerSavingOn();
