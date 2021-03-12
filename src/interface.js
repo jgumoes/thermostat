@@ -57,7 +57,7 @@ $(document).ready(function() {
 
   // handle temperature display
   function updateTemperature() {
-    $('#temperature').text(thermostat.temperature);
+    $('#temperature').text((thermostat.temperature * 8 ) / 10); // convert from C to Reaumur
     $('#temperature').attr('class', thermostat.energyUsage());
   }
 
